@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Sítesis</title>
+    <!-- Link al css -->
+    <link rel="stylesheet" href="./css/login.css" />
+    <!-- Link al javascript -->
+    <script type=" text/javascript " src="./js/valida.js "></script>
+</head>
+
+<body>
+    <div class="parent clearfix ">
+        <div class="bg-illustration ">
+            <img src="./img/logo-jesuites-educacio-b.svg " alt="logo " />
+        </div>
+
+        <div class="login ">
+            <div class="container ">
+                <h1>Bienvenido a <br />Jesuïtes</h1>
+                <div class="login-form ">
+                    <form id="loginform" action="./php/login.php" method="post" enctype="multipart/form-data" onchange="return validaFormulario();">
+                        <input type=" text " id="element_1" name="correo" placeholder="Correo " required />
+                        <span id="element_1_msg" style="color:red"></span>
+
+                        <input type="password" id="element_2" name="contraseña" placeholder="Contraseña" required />
+                        <span id="element_2_msg" style="color:red"></span>
+
+                        <input id="saveForm" class="button_text" type="submit" value="Login" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
