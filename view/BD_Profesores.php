@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
 
   <script src="https://kit.fontawesome.com/ec31a4ddf0.js" crossorigin="anonymous"></script>
-  <!-- <script type=" text/javascript " src="./js/valida.js "></script> -->
 </head>
 
 <!-- poner los require_once aqui -->
@@ -34,11 +33,6 @@
                 </button>
                 <button class="btn btn-default" title="Descarga CSV">
                   <i class="fa-solid fa-file-csv">
-                    <!-- php aqui -->
-                  </i>
-                </button>
-                <button class="btn btn-default" title="Notas medias por materia">
-                  <i class="fa-solid fa-tenge-sign">
                     <!-- php aqui -->
                   </i>
                 </button>
@@ -74,7 +68,6 @@
           <table class="table">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Dni</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
@@ -86,7 +79,6 @@
             <tbody>
               <!-- foreach php aqui -->
               <tr>
-                <td>ID</td>
                 <td>Alumno Ejemplo</td>
                 <td>EjemploMates</td>
                 <td>Ejemplo1</td>
@@ -97,7 +89,6 @@
                     <li>
                       <a href="#" data-tip="Perfil"><i class="fa-regular fa-address-card"></i></a>
                     </li>
-
                   </ul>
                 </td>
               </tr>

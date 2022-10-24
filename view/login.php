@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
 
   <script src="https://kit.fontawesome.com/ec31a4ddf0.js" crossorigin="anonymous"></script>
-  <!-- <script type=" text/javascript " src="./js/valida.js "></script> -->
 </head>
 
 <!-- poner los require_once aqui -->
@@ -33,17 +32,17 @@
                   </i>
                 </button>
                 <button class="btn btn-default" title="Notas">
-                <i class="fa-solid fa-file-lines"></i>
+                  <i class="fa-solid fa-file-lines"></i>
                   <!-- php aqui -->
                   </i>
                   <button class="btn btn-default" title="Notas medias por materia">
-                  <i class="fa-solid fa-tenge-sign"></i>
-                      <!-- php aqui -->
+                    <i class="fa-solid fa-tenge-sign"></i>
+                    <!-- php aqui -->
                     </i>
                   </button>
                   <button class="btn btn-default" title="Materia con la nota más alta">
-                  <i class="fa-solid fa-tenge-sign"></i>
-                      <!-- php aqui -->
+                    <i class="fa-solid fa-tenge-sign"></i>
+                    <!-- php aqui -->
                     </i>
                   </button>
                   <button class="btn btn-default" title="Salir">

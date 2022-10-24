@@ -21,12 +21,15 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col col-sm-3 col-xs-12">
-              <h4 class="title">
-                <!-- PHP nombre del alumno -->
-              </h4>
+              <h4 class="title">Base de Datos: Notas</h4>
             </div>
             <div class="col-sm-9 col-xs-12 text-right">
               <div class="btn_group">
+              <button class="btn btn-default" title="Notas">
+                <i class="fa fa-tenge-sign">
+                  <!-- php aqui -->
+                  </i>
+                </button>
                 <button class="btn btn-default" title="Volver">
                   <i class="fa-solid fa-right-from-bracket">
                     <?php
@@ -42,31 +45,21 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Foto</th>
-                <th>Dni</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Correo</th>
-                <th>Telefono</th>
-                <th>Acciones</th>
+                <th>Modulo</th>
+                <th>UF</th>
+                <th>Nota</th>
               </tr>
             </thead>
             <tbody>
               <!-- foreach php aqui -->
               <tr>
-                <td>Foto</td>
                 <td>Alumno Ejemplo</td>
                 <td>EjemploMates</td>
                 <td>Ejemplo1</td>
                 <td>12</td>
                 <td>ejemplo@ejemplo.com</td>
-                <td>
-                  <ul class="action-list">
-                    <li>
-                      <a href="#" data-tip="Media materias"><i class="fa fa-tenge-sign"></i></a>
-                    </li>
-                  </ul>
-                </td>
               </tr>
               <!-- hasta aqui -->
             </tbody>

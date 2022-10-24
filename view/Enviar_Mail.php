@@ -21,8 +21,11 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col col-sm-3 col-xs-12">
-              <h4 class="title">
-                <!-- PHP nombre del alumno -->
+              <h4 class="title">Eres:
+                <!-- POner php emial usuario -->
+              </h4>
+              <h4 class="title">Enviando a:
+                <!-- POner php email alumno -->
               </h4>
             </div>
             <div class="col-sm-9 col-xs-12 text-right">
@@ -42,30 +45,28 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Foto</th>
-                <th>Dni</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Correo</th>
-                <th>Telefono</th>
+                <th>Sujeto</th>
+                <th>Texto</th>
                 <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
               <!-- foreach php aqui -->
               <tr>
-                <td>Foto</td>
-                <td>Alumno Ejemplo</td>
-                <td>EjemploMates</td>
-                <td>Ejemplo1</td>
-                <td>12</td>
-                <td>ejemplo@ejemplo.com</td>
                 <td>
-                  <ul class="action-list">
-                    <li>
-                      <a href="#" data-tip="Media materias"><i class="fa fa-tenge-sign"></i></a>
-                    </li>
-                  </ul>
+                  <input type="text" style="color:black;"></input>
+                </td>
+                <td>
+                  <input type="text" style="color:black;"></input>
+                </td>
+                <td>
+                  <button class="btn btn-default" title="Volver">
+                    <i class="fa-solid fa-paper-plane">
+                      <?php
+                      // header('Location: ./BD_Profesores.php');
+                      ?>
+                    </i>
+
                 </td>
               </tr>
               <!-- hasta aqui -->
