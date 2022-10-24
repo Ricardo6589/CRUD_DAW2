@@ -1,40 +1,56 @@
 <?php
 
-    require_once 'cabezera.html';
-    require_once '../model/alumno.php';
+    session_start();
+    if(!isset($_SESSION['admin'])){ 
+        echo"<script>window.location.href = '../index.html' </script>";
+    }else{
 
-    $id=$_GET["id"];
+        require_once 'cabezera.html';
+        require_once '../model/alumno.php';
 
-    $alumno = Alumno::getAlumnoId($id);
-   
+        $id=$_GET["id"];
 
-    ?>
-    <div class="form-group align-items-center">
-        <form action="../controllers/modificar.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
-
-            <input type=" text " id="element_1" name="nombre" placeholder="Nombre" value="<?php echo $alumno['nombre_alu'];?>" required />
-            <span id="element_1_msg" style="color:red"></span>
-
-            <input type="text" id="element_2" name="apellido1" placeholder="Primer Apellido" value="<?php echo $alumno['primer_apellido_alu'];?>" required />
-            <span id="element_2.1_msg" style="color:red"></span>
-
-            <input type="text" id="element_2" name="apellido2" placeholder="Segundo Apellido" value="<?php echo $alumno['segundo_apelldio_alu'];?>" required />
-            <span id="element_2.2_msg" style="color:red"></span>
-
-            <input type="text" id="element_2" name="correo" placeholder="Correo" value="<?php echo $alumno['correo_alu'];?>" required />
-            <span id="element_3_msg" style="color:red"></span>
-
-            <input type="password" id="element_2" name="contraseña" placeholder="Contraseña" value="<?php echo $alumno['contraseña_alu'];?>" required />
-            <span id="element_4_msg" style="color:red"></span>
-
-            <input type="text" id="element_2" name="dni" placeholder="DNI" value="<?php echo $alumno['dni_alu'];?>" required />
-            <span id="element_5_msg" style="color:red"></span>
-
-            <input type="text" id="element_2" name="telefono" placeholder="Telefono" value="<?php echo $alumno['telefono_alu'];?>" required />
-            <span id="element_6_msg" style="color:red"></span>
-
+        $alumno = Alumno::getAlumnoId($id);
     
-            <input type="submit" class="btn btn-warning" value="Modificar">
-        </form>
 
-    </div>
+        ?>
+        <div class="form-group align-items-center">
+            <form action="../controllers/modificar.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
+
+                <input type="hidden" name="id" value="<?php echo $alumno['id'];?>">
+                
+                <label for="nombre">Nombre</label><br>
+                <input type=" text " id="element_1" name="nombre"  value="<?php echo $alumno['nombre_alu'];?>" required /> <br><br>
+                <span id="element_1_msg" style="color:red"></span>
+
+                <label for="apellido1">1r Apellido</label><br>
+                <input type="text" id="element_2.1" name="apellido1"  value="<?php echo $alumno['primer_apellido_alu'];?>" required /> <br><br>
+                <span id="element_2.1_msg" style="color:red"></span>
+
+                <label for="apellido2">2n Apellido</label><br>
+                <input type="text" id="element_2.2" name="apellido2"  value="<?php echo $alumno['segundo_apellido_alu'];?>" required /> <br><br>
+                <span id="element_2.2_msg" style="color:red"></span>
+
+                <label for="correo">Correo</label><br>
+                <input type="text" id="element_3" name="correo" value="<?php echo $alumno['correo_alu'];?>" required /> <br><br>
+                <span id="element_3_msg" style="color:red"></span>
+
+                <label for="contraseña">Contraseña</label><br>
+                <input type="text" id="element_4" name="contraseña"  value="<?php echo $alumno['contraseña_alu'];?>" required /> <br><br>
+                <span id="element_4_msg" style="color:red"></span>
+
+                <label for="dni">DNI</label><br>
+                <input type="text" id="element_5" name="dni"  value="<?php echo $alumno['dni_alu'];?>" required /> <br><br>
+                <span id="element_5_msg" style="color:red"></span>
+
+                <label for="telefono">Telefono</label><br>
+                <input type="text" id="element_6" name="telefono"  value="<?php echo $alumno['telefono_alu'];?>" required /> <br><br>
+                <span id="element_6_msg" style="color:red"></span>
+
+        
+                <input type="submit" class="btn btn-warning" value="Modificar">
+            </form>
+
+        </div>
+    <?php
+    }

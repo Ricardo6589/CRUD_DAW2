@@ -194,15 +194,27 @@ class Alumno {
         return $listaAlumnos;
     } 
 
-    public static function getAlumnoId(int $id){
+    public static function getAlumnoId($id){
     
         require_once 'conexion.php';
-        $sql = ("SELECT `id`, `nombre_alu`, `primer_apellido_alu`, `segundo_apellido_alu`,`correo_alu` , `contraseña_alu`, `dni_alu`, `telefono_alu`  FROM `tbl_alumnos` WHERE id = ?");
+        $sql = ("SELECT `id`, `nombre_alu`, `primer_apellido_alu`, `segundo_apellido_alu`,`correo_alu` , `contraseña_alu`, `dni_alu`, `telefono_alu`  FROM `tbl_alumnos` WHERE `id` = ?");
         $stmt=mysqli_stmt_init($connection);
         mysqli_stmt_prepare($stmt,$sql);
         mysqli_stmt_bind_param($stmt,"i",$id);  
-        mysqli_stmt_execute($stmt);         
-       
+        mysqli_stmt_execute($stmt);
+        $alumno=mysqli_stmt_get_result($stmt);
+        mysqli_fetch_assoc($alumno);
+        foreach ($alumno as $tbl_alumnos){                   
+            $tbl_alumnos['nombre_alu'];
+            $tbl_alumnos['primer_apellido_alu'];
+            $tbl_alumnos['segundo_apellido_alu'];            
+            $tbl_alumnos['correo_alu']; 
+            $tbl_alumnos['contraseña_alu'];             
+            $tbl_alumnos['dni_alu'];             
+            $tbl_alumnos['telefono_alu'];                
+        }  
+        return $tbl_alumnos;
+             
     }
     
     /**
@@ -215,7 +227,7 @@ class Alumno {
         $sql="INSERT INTO tbl_alumnos (id,nombre_alu,primer_apellido_alu,segundo_apellido_alu,correo_alu,contraseña_alu,dni_alu,telefono_alu) VALUES (?,?,?,?,?,?,?,?)";
         $stmt=mysqli_stmt_init($connection);
         mysqli_stmt_prepare($stmt,$sql);
-        mysqli_stmt_bind_param($stmt,"issssss",$id,$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu,$correo_alu,$contraseña_alu,$dni_alu,$telefono_alu);         
+        mysqli_stmt_bind_param($stmt,"isssssss",$id,$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu,$correo_alu,$contraseña_alu,$dni_alu,$telefono_alu);         
         mysqli_stmt_execute($stmt);  
     
     }   
@@ -238,16 +250,14 @@ class Alumno {
     * Esta funcion te modifica un nuevo alumno de la base de datos
     */
 
-    public static function updateAlumno($id,$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu, $correo_alu, $contraseña_alu, $dni_alu, $telefono_alu){       
+    public static function updateAlumno($nombre_alu,$primer_apellido_alu,$segundo_apellido_alu, $correo_alu, $contraseña_alu, $dni_alu, $telefono_alu,$id){       
         require_once 'conexion.php';
-        $sql=("UPDATE tbl_alumnos SET nombre_alu=?,primer_apellido_alu=?,segundo_apellido_alu=?,correo_alu=?,contraseña_alu=?,dni_alu=?,telefono_alu=?,primer_apellido_alu=? WHERE id=?");
+        $sql=("UPDATE tbl_alumnos SET nombre_alu=?,primer_apellido_alu=?,segundo_apellido_alu=?,correo_alu=?,contraseña_alu=?,dni_alu=?,telefono_alu=? WHERE id=?");
         $stmt=mysqli_stmt_init($connection);
         mysqli_stmt_prepare($stmt,$sql);
-        mysqli_stmt_bind_param($stmt,"isssssss",$id,$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu,$correo_alu,$contraseña_alu,$dni_alu,$telefono_alu);  
-        mysqli_stmt_execute($stmt);  
+        mysqli_stmt_bind_param($stmt,"sssssssi",$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu,$correo_alu,$contraseña_alu,$dni_alu,$telefono_alu,$id);  
+        mysqli_stmt_execute($stmt);       
         
     }
-    
-
     
 }

@@ -1,15 +1,27 @@
 <?php
-require_once '../model/alumno.php';
-require_once '../view/modificarvista.php';
 
-$id = $_POST['id'];
-$nombre = $_POST['name'];
-$edad = $_POST['edad'];
 
-// $sql = "UPDATE `tbl_alumno` SET `id`='[$id]',`nombre`='[$nombre]',`edad`='[edad]' WHERE id=?";
+session_start();
+            
+if(!isset($_SESSION['admin'])){ 
+    echo"<script>window.location.href = '../index.html' </script>";
+}else{ 
+    require_once '../model/alumno.php';
 
-Alumno::updateAlumno($id,$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu, $correo_alu, $constraseña_alu, $dni_alu, $telefono_alu);
 
-// header("Location:vista.php");
-echo"<script>window.location.href = '../index.html' </script>";
-// echo "<script>location.href=\"vista.php\"</script>";
+    $id = $_POST['id'];
+    $nombre_alu = $_POST['nombre'];
+    $primer_apellido_alu = $_POST['apellido1'];
+    $segundo_apellido_alu = $_POST['apellido2'];
+    $correo_alu = $_POST['correo'];
+    $contraseña_alu = $_POST['contraseña'];
+    $contraseña_alu = sha1($contraseña_alu);  
+    $dni_alu = $_POST['dni'];
+    $telefono_alu = $_POST['telefono'];
+
+
+    Alumno::updateAlumno($nombre_alu,$primer_apellido_alu,$segundo_apellido_alu, $correo_alu, $contraseña_alu, $dni_alu, $telefono_alu,$id);
+
+    echo"<script>window.location.href = '../view/vista.php' </script>";
+
+}
