@@ -20,27 +20,28 @@ var validaEmail = function(evento) {
 
 }
 var validaContra = function(evento) {
-    console.log("hola")
+    //     console.log("hola")
     var valor = evento.target.value;
-    if (valor == null || valor.length == 0 || (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/.test(valor))) {
-        // console.log("hola2")
-        // document.getElementById(evento.target.id + "_msg").innerHTML = evento.target.name + " no puede estar vacio";
-        // evento.target.style.borderColor = "red";
-        // evento.target.style.borderWidth = "5px";
-        // evento.target.focus();
-        document.getElementById('saveForm').addAttribute("disabled");
+    //VA DENTRO DEL IF SEGUN RICHI     (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/.test(valor))
+    if (valor == null || valor.length == 0) {
+        //         console.log("hola2")
+        //document.getElementById(evento.target.id + "_msg").innerHTML = evento.target.name + " no puede estar vacio";
+        //         evento.target.style.borderColor = "red";
+        //         evento.target.style.borderWidth = "5px";
+        //         evento.target.focus();
         swal({
             title: "La contraseña no puede estar vacia",
             text: "Vuelve a introducir los datos",
             icon: "error",
         });
-        return false;
+        //         document.getElementById('saveForm').addAttribute("disabled");
+        //         return false;
     } else {
-        document.getElementById(evento.target.id + "_msg").innerHTML = "";
-        evento.target.style.borderColor = "black";
-        evento.target.style.borderWidth = "1px";
-        document.getElementById('saveForm').removeAttribute("disabled");
-        return true;
+        //         document.getElementById(evento.target.id + "_msg").innerHTML = "";
+        //         evento.target.style.borderColor = "black";
+        //         evento.target.style.borderWidth = "1px";
+        //         document.getElementById('saveForm').removeAttribute("disabled");
+        //         return true;
     }
 }
 
