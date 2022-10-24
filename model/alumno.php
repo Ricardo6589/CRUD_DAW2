@@ -4,24 +4,45 @@ class Alumno {
     //ATRIBUTOS
     private $id; 
     private $nombre_alu;
-    private $apellidos_alu;
+    private $primer_apellido_alu;
+    private $segundo_apellido_alu;
     private $correo_alu;
-    private $constraseña_alu;
+    private $contraseña_alu;
     private $dni_alu;
     private $telefono_alu;
    
 
-    public function __construct($id, $nombre_alu, $apellidos_alu, $correo_alu, $constraseña_alu, $dni_alu, $telefono_alu) {
+    public function __construct($id, $nombre_alu, $primer_apellido_alu,$segundo_apellido_alu, $correo_alu, $contraseña_alu, $dni_alu, $telefono_alu) {
         $this->id = $id; //1º id referencia a atr, 2º a contructor
         $this->nombre_alu = $nombre_alu;
-        $this->apellidos_alu = $apellidos_alu;
+        $this->primer_apellido_alu = $primer_apellido_alu;
+        $this->segundo_apellido_alu = $segundo_apellido_alu;       
         $this->correo_alu = $correo_alu;
-        $this->constraseña_alu = $constraseña_alu;
+        $this->contraseña_alu = $contraseña_alu;
         $this->dni_alu = $dni_alu;
         $this->telefono_alu = $telefono_alu;
         
     }
-    
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
     /**
      * Get the value of nombre_alu
      */ 
@@ -41,26 +62,47 @@ class Alumno {
 
         return $this;
     } 
-    
+
     /**
-     * Get the value of apellidos_alu
+     * Get the value of primer_apellido_alu
      */ 
-    public function getApellidos_alu()
+    public function getPrimer_apellido_alu()
     {
-        return $this->apellidos_alu;
+        return $this->primer_apellido_alu;
     }
 
     /**
-     * Set the value of apellidos_alu
+     * Set the value of primer_apellido_alu
      *
      * @return  self
      */ 
-    public function setApellidos_alu($apellidos_alu)
+    public function setPrimer_apellido_alu($primer_apellido_alu)
     {
-        $this->apellidos_alu = $apellidos_alu;
+        $this->primer_apellido_alu = $primer_apellido_alu;
 
         return $this;
     }
+
+    /**
+     * Get the value of segundo_apellido_alu
+     */ 
+    public function getSegundo_apellido_alu()
+    {
+        return $this->segundo_apellido_alu;
+    }
+
+    /**
+     * Set the value of segundo_apellido_alu
+     *
+     * @return  self
+     */ 
+    public function setSegundo_apellido_alu($segundo_apellido_alu)
+    {
+        $this->segundo_apellido_alu = $segundo_apellido_alu;
+
+        return $this;
+    }   
+   
 
     /**
      * Get the value of correo_alu
@@ -83,21 +125,21 @@ class Alumno {
     }
 
     /**
-     * Get the value of constraseña_alu
+     * Get the value of contraseña_alu
      */ 
-    public function getConstraseña_alu()
+    public function getcontraseña_alu()
     {
-        return $this->constraseña_alu;
+        return $this->contraseña_alu;
     }
 
     /**
-     * Set the value of constraseña_alu
+     * Set the value of contraseña_alu
      *
      * @return  self
      */ 
-    public function setConstraseña_alu($constraseña_alu)
+    public function setcontraseña_alu($contraseña_alu)
     {
-        $this->constraseña_alu = $constraseña_alu;
+        $this->contraseña_alu = $contraseña_alu;
 
         return $this;
     }
@@ -155,11 +197,11 @@ class Alumno {
     public static function getAlumnoId(int $id){
     
         require_once 'conexion.php';
-        $stmt = ("SELECT `id`, `nombre_alu`, `apellidos_alu`, `correo_alu` , `contraseña_alu`, `dni_alu`, `telefono_alu`  FROM `tbl_alumno` WHERE id = ?");
+        $sql = ("SELECT `id`, `nombre_alu`, `primer_apellido_alu`, `segundo_apellido_alu`,`correo_alu` , `contraseña_alu`, `dni_alu`, `telefono_alu`  FROM `tbl_alumnos` WHERE id = ?");
         $stmt=mysqli_stmt_init($connection);
+        mysqli_stmt_prepare($stmt,$sql);
         mysqli_stmt_bind_param($stmt,"i",$id);  
-        mysqli_stmt_execute($stmt);        
-        return $stmt;
+        mysqli_stmt_execute($stmt);         
        
     }
     
@@ -167,19 +209,45 @@ class Alumno {
     * Esta funcion te inserta un nuevo alumno en la base de datos
     */
 
-    public static function crearAlumno($nombre_alu,$apellidos_alu, $correo_alu, $constraseña_alu, $dni_alu, $telefono_alu){
+    public static function crearAlumno($id,$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu, $correo_alu, $contraseña_alu, $dni_alu, $telefono_alu){
         require_once "conexion.php";
-        $stmt=("INSERT INTO tbl_alumno (id,nombre_alu,apellidos_alu,correo_alu,constraseña_alu,dni_alu,telefono_alu) VALUES (?,?,?,?,?,?,?)");
+           
+        $sql="INSERT INTO tbl_alumnos (id,nombre_alu,primer_apellido_alu,segundo_apellido_alu,correo_alu,contraseña_alu,dni_alu,telefono_alu) VALUES (?,?,?,?,?,?,?,?)";
         $stmt=mysqli_stmt_init($connection);
-        mysqli_stmt_bind_param($stmt,"i",$id);
-        mysqli_stmt_bind_param($stmt,"s",$nombre_alu);
-        mysqli_stmt_bind_param($stmt,"s",$apellidos_alu);
-        mysqli_stmt_bind_param($stmt,"s",$correo_alu);
-        mysqli_stmt_bind_param($stmt,"i",$constraseña_alu);
-        mysqli_stmt_bind_param($stmt,"s",$dni_alu);
-        mysqli_stmt_bind_param($stmt,"s",$telefono_alu);       
-        mysqli_stmt_execute($stmt);
-        return $stmt;
+        mysqli_stmt_prepare($stmt,$sql);
+        mysqli_stmt_bind_param($stmt,"issssss",$id,$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu,$correo_alu,$contraseña_alu,$dni_alu,$telefono_alu);         
+        mysqli_stmt_execute($stmt);  
+    
     }   
 
+    /**
+    * Esta funcion te elimina un nuevo alumno de la base de datos
+    */
+
+    public static function eliminarAlumno($id){       
+        require_once 'conexion.php';
+        $sql =("DELETE FROM `tbl_alumnos` WHERE `id`=?");
+        $stmt=mysqli_stmt_init($connection);
+        mysqli_stmt_prepare($stmt,$sql);
+        mysqli_stmt_bind_param($stmt,"i",$id);  
+        mysqli_stmt_execute($stmt);                           
+        
+    }
+
+    /**
+    * Esta funcion te modifica un nuevo alumno de la base de datos
+    */
+
+    public static function updateAlumno($id,$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu, $correo_alu, $contraseña_alu, $dni_alu, $telefono_alu){       
+        require_once 'conexion.php';
+        $sql=("UPDATE tbl_alumnos SET nombre_alu=?,primer_apellido_alu=?,segundo_apellido_alu=?,correo_alu=?,contraseña_alu=?,dni_alu=?,telefono_alu=?,primer_apellido_alu=? WHERE id=?");
+        $stmt=mysqli_stmt_init($connection);
+        mysqli_stmt_prepare($stmt,$sql);
+        mysqli_stmt_bind_param($stmt,"isssssss",$id,$nombre_alu,$primer_apellido_alu,$segundo_apellido_alu,$correo_alu,$contraseña_alu,$dni_alu,$telefono_alu);  
+        mysqli_stmt_execute($stmt);  
+        
+    }
+    
+
+    
 }
