@@ -12,7 +12,7 @@
         session_start();
             
         if(empty($_SESSION['correo'])){ 
-            echo"<script>window.location.href = '../index.html' </script>";
+            //echo"<script>window.location.href = '../index.html' </script>";
         }else{
                 
             require_once '../model/alumno.php';

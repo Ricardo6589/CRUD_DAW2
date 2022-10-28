@@ -13,7 +13,26 @@
   <!-- <script type=" text/javascript " src="./js/valida.js "></script> -->
 </head>
 
-<!-- poner los require_once aqui -->
+<?php
+include_once "../model/conexion.php";
+$limit=5;
+$page = 1;
+$previous = $page - 1;
+$next = $page + 1;
+//$sql = "SELECT COUNT(*) FROM tbl_alumnos";
+//$result = mysqli_query($connection,$sql);
+//$pages = mysqli_fetch_assoc($result);
+
+//$pages = $connection->query("SELECT count(*) FROM tbl_alumnos;");
+//$pages = $count->fetch_all(MYSQLI_ASSOC);
+//$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+$result = mysqli_query($connection, "SELECT * FROM tbl_alumnos LIMIT $start,$limit;");
+//$alumnos = mysqli_fetch_assoc($result);
+$alumnos = $result->fetch_all(MYSQLI_ASSOC);
+$count = mysqli_num_rows($result);
+$pages = ceil($count/5)
+?>
 
 <body>
   <div class="container">
@@ -74,7 +93,6 @@
           <table class="table">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Dni</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
@@ -84,14 +102,13 @@
               </tr>
             </thead>
             <tbody>
-              <!-- foreach php aqui -->
+              <?php foreach($alumnos as $alumno) :?>
               <tr>
-                <td>ID</td>
-                <td>Alumno Ejemplo</td>
-                <td>EjemploMates</td>
-                <td>Ejemplo1</td>
-                <td>12</td>
-                <td>ejemplo@ejemplo.com</td>
+                <td><?= $alumno['dni_alu']; ?></td>
+                <td><?= $alumno['nombre_alu']; ?></td>
+                <td><?= $alumno['apellidos_alu']; ?></td>
+                <td><?= $alumno['correo_alu']; ?></td>
+                <td><?= $alumno['telefono_alu']; ?></td>
                 <td>
                   <ul class="action-list">
                     <li>
@@ -101,6 +118,7 @@
                   </ul>
                 </td>
               </tr>
+              <?php endforeach; ?>
               <!-- hasta aqui -->
             </tbody>
           </table>
@@ -110,28 +128,26 @@
             <div class="col col-sm-6 col-xs-6">
               Mostrando <b>
                 <!-- php aqui  -->
-                10
+                5
               </b> de <b>
                 <!-- php aqui  -->
-                ?
+                <?php echo $count;?>
               </b>
             </div>
             <div class="col-sm-6 col-xs-6">
               <ul class="pagination hidden-xs pull-right">
-                <li><a href="#">
+                <li><a id="johncena" href="BD_Profesores.php?page=<?= $previous; ?>">
                     <i class="fa-solid fa-arrow-left"></i></a>
                 </li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
+                <?php for($i = 1 ; $i <= $pages ; $i++) : ?>
+                  <li class="active"><a href="BD_Profesores.php?page=<?= $i; ?>"><?= $i; ?></a></li>
+                <?php endfor; ?>
+                <li><a href="BD_Profesores.php?page=<?= $next; ?>"><i class="fa-solid fa-arrow-right"></i></a></li>
               </ul>
-              <ul class="pagination visible-xs pull-right">
+              <!-- <ul class="pagination visible-xs pull-right">
                 <li><a href="#"><i class="fa-solid fa-arrow-left"></i></a></li>
                 <li><a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
-              </ul>
+              </ul> -->
             </div>
           </div>
         </div>
