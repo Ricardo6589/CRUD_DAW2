@@ -20,7 +20,13 @@ if(!isset($_GET['page'])) {
 } else {
   $page = $_GET['page'];
 }
-$limit=5;
+if(isset($_GET['chnglimit'])) {
+  $chnglimit = $_GET['chnglimit'];
+  $limit = $chnglimit;
+} else {
+  $limit = 5;
+}
+
 $start = ($page - 1) * $limit;
 $previous = $page - 1;
 $next = $page + 1;
@@ -150,7 +156,7 @@ $pages = ceil($count/$limit)
                     <i class="fa-solid fa-arrow-left"></i></a>
                 </li> -->
                 <?php for($i = 1 ; $i <= $pages ; $i++) : ?>
-                  <li class="active"><a href="BD_Profesores.php?page=<?= $i; ?>"><?= $i; ?></a></li>
+                  <li class="active"><a href="BD_Profesores.php?chnglimit=<?= $limit; ?>&page=<?= $i; ?>"><?= $i; ?></a></li>
                 <?php endfor; ?>
                 <!-- <li><a href="BD_Profesores.php?page=<?= $next; ?>"><i class="fa-solid fa-arrow-right"></i></a></li> -->
               </ul>
@@ -158,8 +164,8 @@ $pages = ceil($count/$limit)
                 <li><a href="#"><i class="fa-solid fa-arrow-left"></i></a></li>
                 <li><a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
               </ul> -->
-              <form action="" method="post">
-                <input type="text" class="form-control" id="buscar" name="NUMregistros" placeholder="Datos por página...">
+              <form action="BD_profesores.php" method="get">
+                <input type="text" class="form-control" id="buscar" name="chnglimit" placeholder="Datos por página...">
                 <input type="submit" class="btn btn-success" value="Mostrar">
               </form>
             </div>
