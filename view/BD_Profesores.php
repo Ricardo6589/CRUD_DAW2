@@ -20,7 +20,7 @@ if(!isset($_GET['page'])) {
 } else {
   $page = $_GET['page'];
 }
-$limit=3;
+$limit=5;
 $start = ($page - 1) * $limit;
 $previous = $page - 1;
 $next = $page + 1;
@@ -158,6 +158,10 @@ $pages = ceil($count/$limit)
                 <li><a href="#"><i class="fa-solid fa-arrow-left"></i></a></li>
                 <li><a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
               </ul> -->
+              <form action="" method="post">
+                <input type="text" class="form-control" id="buscar" name="NUMregistros" placeholder="Datos por página...">
+                <input type="submit" class="btn btn-success" value="Mostrar">
+              </form>
             </div>
           </div>
         </div>
