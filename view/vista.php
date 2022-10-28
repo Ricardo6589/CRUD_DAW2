@@ -1,95 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-   <?php 
-        session_start();
+<?php
+  session_start();
             
-        if(empty($_SESSION['correo'])){ 
-            echo"<script>window.location.href = '../index.html' </script>";
-        }else{     
-            
-            ?>
-            <form action="vista.php" method="get">
-                <input type="text" name="nombre_filtro">
-                <input type="submit" name="filtrar" value="Filtrar">
-            </form>  
-
-            <?php         
-            
-            $listaAlumnos;
-            require_once '../model/alumno.php'; 
-            
-            if(isset($_GET['filtrar'])){
-                $nombre_filtro=$_GET['nombre_filtro']; 
-                $listaAlumnos=Alumno::getAlumnos('nombre_alu',$nombre_filtro);  
-            }
-            else{ 
-                $listaAlumnos=Alumno::getAlumnos('nombre_alu', "");  
-            }                
-                        
-          
-
-            echo "<table class='table table-light' border='1'>
-            <tr>
-                <th>Perfil</th>
-                <th>DNI</th>
-                <th>Nombre</th>
-                <th>1r Apellido</th>
-                <th>2n Apellido</th>
-                <th>Correo</th>                
-                <th>Telefono</th>
-                <th>Notas</th>";
-                
-                if (isset($_SESSION['admin'])){  
-                    echo "<th>Modificar</th>";
-                    echo "<th>Eliminar</th>";
-                }"
-            </tr>";
-
-            foreach ($listaAlumnos as $tbl_alumnos){
-                echo "<tr>";
-
-                echo "<td><a type='button' class='btn btn-danger' href='../view/perfil.php?id={$tbl_alumnos['id']}'>Perfil</a></td>";
-                echo "<td>{$tbl_alumnos['dni_alu']}</td>";            
-                echo "<td>{$tbl_alumnos['nombre_alu']}</td>";
-                echo "<td>{$tbl_alumnos['primer_apellido_alu']}</td>";
-                echo "<td>{$tbl_alumnos['segundo_apellido_alu']}</td>";
-                echo "<td>{$tbl_alumnos['correo_alu']}</td>";                
-                echo "<td>{$tbl_alumnos['telefono_alu']}</td>";
-                echo "<td><a type='button' class='btn btn-danger' href='../controllers/crearnota.php?id={$tbl_alumnos['id']}'>Notas</a></td>";
-                
-                if (isset($_SESSION['admin'])){                     
-                    echo "<td><a type='button' class='btn btn-primary' href='../view/modificarvista.php?id={$tbl_alumnos['id']}'>Modificar</a></td>";
-                    echo "<td><a type='button' class='btn btn-danger' href='../controllers/eliminar.php?id={$tbl_alumnos['id']}'>Eliminar</a></td>";                
-                    echo "</tr>";
-                }                         
-               
-            }
-                        
-            if (isset($_SESSION['admin'])){    
-            ?>
-            <a href="../view/crearvista.php" class="btn btn-success btn-lg" role="button" aria-disabled="true">Crear</a><br>
-            <a href="../csv/descargar.php" class="btn btn-success btn-lg" role="button" aria-disabled="true">Descargar CSV</a>
-            <?php
-            }
-            ?>
-            <a href="../index.html" class="btn btn-success btn-lg" role="button" aria-disabled="true">Log Out</a>
-            <?php       
-
-        }       
-
+  if(empty($_SESSION['correo'])){ 
+    echo"<script>window.location.href = '../index.html' </script>";
+  }else{ 
+    require_once "cabecera.html";
     ?>
-    
-</body>
-</html>
-<?php  
-
-    
-    
+    <div class="container">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="panel">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col col-sm-3 col-xs-12">
+                <h4 class="title">Alumnos</h4>
+              </div>
+              <div class="col-sm-9 col-xs-12 text-right">
+                <div class="btn_group">
+                  <?php
+                  if (isset($_SESSION['admin'])){
+                  ?>
+                    <form action="crearvista.php">  
+                      <button class="btn btn-default" title="Crear Alumno">
+                        <i class="fa-solid fa-circle-plus">                 
+                        </i>
+                      </button> 
+                    </form>
+                  <?php
+                  }
+                  
+                  if (isset($_SESSION['admin'])){
+                  ?>
+                    <form action="../csv/descargar.php">
+                      <button class="btn btn-default" title="Descarga CSV">
+                        <i class="fa-solid fa-file-csv"></i>
+                      </button>
+                    </form>  
+                  <?php
+                  }               
+                  ?>
+                  <form action="estadisticas_nota.php">
+                     <button class="btn btn-default" title="Estadítica Notas">
+                      <i class="fa-solid fa-tenge-sign">                        
+                      </i>
+                    </button>
+                  </form>  
+                  <form action="../index.html">
+                    <button class="btn btn-default" title="Salir">
+                      <i class="fa-solid fa-right-from-bracket">                        
+                      </i>
+                    </button>
+                  </form> 
+                  <form id="form_filtros" action="vista.php" method="get">
+                    <input type="text" class="form-control" name="nombre_filtro" placeholder="Nombre">
+                    <button class="btn btn-default" title="Filtrar">
+                      <i class="fa-solid fa-magnifying-glass">
+                        <!-- php aqui -->
+                      </i>
+                    </button>
+                  </form>                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Dni</th>
+                    <th>Nombre</th>
+                    <th>1r_Apellido</th>
+                    <th>2n_Apellido</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php
+                $listaAlumnos;
+                require_once '../model/alumno.php'; 
+                
+                if(isset($_GET['filtrar'])){
+                    $nombre_filtro=$_GET['nombre_filtro']; 
+                    $listaAlumnos=Alumno::getAlumnos('nombre_alu',$nombre_filtro);  
+                }
+                else{ 
+                    $listaAlumnos=Alumno::getAlumnos('nombre_alu', "");  
+                } 
+                foreach ($listaAlumnos as $tbl_alumnos){
+                  echo "<tr>";   
+                 
+                  echo "<td>{$tbl_alumnos['dni_alu']}</td>";            
+                  echo "<td>{$tbl_alumnos['nombre_alu']}</td>";
+                  echo "<td>{$tbl_alumnos['primer_apellido_alu']}</td>";
+                  echo "<td>{$tbl_alumnos['segundo_apellido_alu']}</td>";
+                  echo "<td>{$tbl_alumnos['correo_alu']}</td>";                
+                  echo "<td>{$tbl_alumnos['telefono_alu']}</td>"; 
+                  ?>
+                  <td>
+                    <ul class="action-list">
+                      <li>
+                        <?php
+                          echo "<a href='../view/perfil.php?id={$tbl_alumnos['id']}' data-tip='Perfil'><i class='fa-regular fa-address-card'></i></a>";
+                        ?>
+                      </li>
+                      <li>
+                        <?php
+                          echo "<a href='enviar_mail.php?id={$tbl_alumnos['id']}' data-tip='Enviar Mail'><i class='fa-regular fa-envelope'></i></a>";
+                        ?>
+                      </li>
+                      <li>
+                        <?php
+                          echo "<a  href='notas.php?id={$tbl_alumnos['id']}' data-tip='Notas'><i class='fa-solid fa-file-csv' class='fa-regular fa-envelope' ></i></a>";
+                        ?>
+                      </li>
+                      <?php
+                      if (isset($_SESSION['admin'])){
+                        ?>
+                        <li>
+                          <?php
+                            echo "<a href='../view/modificarvista.php?id={$tbl_alumnos['id']}' data-tip='Editar'><i class='fa fa-edit'></i></a>"
+                          ?>
+                        </li>
+                        <li>
+                          <?php
+                          echo "<a  href='../controllers/eliminar.php?id={$tbl_alumnos['id']}' data-tip='Eliminar'><i class='fa fa-trash'></i></a>"
+                          ?>
+                        </li>
+                        <?php
+                      }
+                      ?>                     
+                    </ul>
+                  <td>
+                  <?php
+                  echo "</tr>";                                         
+                   
+                }
+                  ?>                 
+                </tbody>
+              </table>
+            </div>
+            <div class="panel-footer">
+              <div class="row">
+                <div class="col col-sm-6 col-xs-6">
+                  Mostrando <b>
+                    <!-- php aqui  -->
+                    10
+                  </b> de <b>
+                    <!-- php aqui  -->
+                    ?
+                  </b>
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                  <ul class="pagination hidden-xs pull-right">
+                    <li><a href="#">
+                        <i class="fa-solid fa-arrow-left"></i></a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
+                  </ul>
+                  <ul class="pagination visible-xs pull-right">
+                    <li><a href="#"><i class="fa-solid fa-arrow-left"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
+                  </ul>
+                </div>
+              </div>    
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php
+    }

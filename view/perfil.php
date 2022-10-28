@@ -1,55 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+
+<?php
+
+  require_once "cabecera.html";
+  session_start();            
+  if(empty($_SESSION['correo'])){ 
+    echo"<script>window.location.href = '../index.html' </script>";
+  }else{
+
+  ?>
+  <body>
+    <div class="container">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="panel">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col col-sm-3 col-xs-12">
+                <h4 class="title">
+                  <!-- PHP nombre del alumno -->
+                </h4>
+              </div>
+              <div class="col-sm-9 col-xs-12 text-right">
+                <div class="btn_group">
+                  <form action="vista.php">
+                    <button class="btn btn-default" title="Volver">
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                  </form>                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php    
+          require_once '../model/alumno.php';
+
+          $id=$_GET["id"];
     
-   <?php 
-        session_start();
-            
-        if(empty($_SESSION['correo'])){ 
-            echo"<script>window.location.href = '../index.html' </script>";
-        }else{
-            
-            require_once '../model/alumno.php';
-
-            $id=$_GET["id"];
-
-            $alumno=Alumno::getAlumnoId($id);
-            
-            echo "<table class='table table-light' border='1'>
-            <tr>
-                
-                <th>DNI</th>
-                <th>Nombre</th>
-                <th>1r Apellido</th>
-                <th>2n Apellido</th>
-                <th>Correo</th>                
-                <th>Telefono</th>
-                
-            </tr>";
-
+          $alumno=Alumno::getAlumnoId($id);
+          ?>
+          <div class="panel-body table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Foto</th>
+                  <th>Dni</th>
+                  <th>Nombre</th>
+                  <th>1r_Apellido</th>
+                  <th>2n_Apellido</th>
+                  <th>Correo</th>
+                  <th>Telefono</th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <?php
             
                 echo "<tr>";
-                echo "<td>{$alumno['dni_alu']}</td>";            
-                echo "<td>{$alumno['nombre_alu']}</td>";
-                echo "<td>{$alumno['primer_apellido_alu']}</td>";
-                echo "<td>{$alumno['segundo_apellido_alu']}</td>";
-                echo "<td>{$alumno['correo_alu']}</td>";                
-                echo "<td>{$alumno['telefono_alu']}</td>";              
+                  echo "<td>{$alumno['dni_alu']}</td>";            
+                  echo "<td>{$alumno['nombre_alu']}</td>";
+                  echo "<td>{$alumno['primer_apellido_alu']}</td>";
+                  echo "<td>{$alumno['segundo_apellido_alu']}</td>";
+                  echo "<td>{$alumno['correo_alu']}</td>";                
+                  echo "<td>{$alumno['telefono_alu']}</td>";              
                 echo "</tr>";
-             
-
-        }
-
-    ?>
-    
-</body>
-</html>
-<?php  
-
-    
+                ?>              
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <?php
+}

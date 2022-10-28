@@ -30,13 +30,11 @@
             </div>
             <div class="col-sm-9 col-xs-12 text-right">
               <div class="btn_group">
-                <button class="btn btn-default" title="Volver">
-                  <i class="fa-solid fa-right-from-bracket">
-                    <?php
-                    // header('Location: ./BD_Profesores.php');
-                    ?>
-                  </i>
-                </button>
+                <form action="vista.php">
+                  <button class="btn btn-default" title="Volver">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                  </button>
+                </form>
               </div>
             </div>
           </div>

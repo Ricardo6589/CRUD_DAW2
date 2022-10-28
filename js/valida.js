@@ -40,6 +40,6 @@ var validaEmail = function(evento) {
 
 window.onload = function() {
 
-    document.getElementById("element_1").onblur = validaEmail;
-    // document.getElementById("element_2").onblur = validaContra;
+    document.getElementById("element_3").onblur = validaEmail;
+    // document.getElementById("element_4").onblur = validaContra;
 }
