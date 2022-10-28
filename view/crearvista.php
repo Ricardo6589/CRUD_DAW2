@@ -7,7 +7,7 @@
         echo"<script>window.location.href = '../index.html' </script>";
     }else{
     
-        require_once 'cabezera.html';  
+        require_once 'cabecera.html';  
 
         ?>
         <div class="form-group align-items-center">

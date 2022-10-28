@@ -187,9 +187,12 @@ class Alumno {
     /**
     * Esta funcion te devuelve la lista de alumnos y no le pasa ningun parametro
     */
-    public static function getAlumnos(){        
-        require_once "conexion.php";
-        $sql = "SELECT * FROM tbl_alumnos";
+    public static function getAlumnos($nombre_alu, $nombre_filtro){    
+        require_once "conexion.php";        
+    
+            $sql = "SELECT * FROM tbl_alumnos WHERE $nombre_alu LIKE '%$nombre_filtro%'"; 
+          
+        
         $listaAlumnos = mysqli_query($connection, $sql);  
         return $listaAlumnos;
     } 

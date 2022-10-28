@@ -24,11 +24,15 @@
 
 
     if ($num==1){          
-        session_start();        
+        session_start();  
+        session_destroy();
+        session_start();       
         $_SESSION['correo'] = $correo;
         echo"<script>window.location.href = '../view/vista.php' </script>";
     }else if($num2==1){
-        session_start();        
+        session_start();  
+        session_destroy();
+        session_start();       
         $_SESSION['correo'] = $correo;        
         $_SESSION['admin'] = true;
         echo"<script>window.location.href = '../view/vista.php' </script>";

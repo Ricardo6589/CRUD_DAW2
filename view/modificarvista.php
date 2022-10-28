@@ -5,7 +5,7 @@
         echo"<script>window.location.href = '../index.html' </script>";
     }else{
 
-        require_once 'cabezera.html';
+        require_once 'cabecera.html';
         require_once '../model/alumno.php';
 
         $id=$_GET["id"];

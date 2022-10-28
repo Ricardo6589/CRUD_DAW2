@@ -13,11 +13,28 @@
             
         if(empty($_SESSION['correo'])){ 
             echo"<script>window.location.href = '../index.html' </script>";
-        }else{
-                
-            require_once '../model/alumno.php';
+        }else{     
+            
+            ?>
+            <form action="vista.php" method="get">
+                <input type="text" name="nombre_filtro">
+                <input type="submit" name="filtrar" value="Filtrar">
+            </form>  
 
-            $listaAlumnos=Alumno::getAlumnos();
+            <?php         
+            
+            $listaAlumnos;
+            require_once '../model/alumno.php'; 
+            
+            if(isset($_GET['filtrar'])){
+                $nombre_filtro=$_GET['nombre_filtro']; 
+                $listaAlumnos=Alumno::getAlumnos('nombre_alu',$nombre_filtro);  
+            }
+            else{ 
+                $listaAlumnos=Alumno::getAlumnos('nombre_alu', "");  
+            }                
+                        
+          
 
             echo "<table class='table table-light' border='1'>
             <tr>
@@ -64,9 +81,9 @@
             }
             ?>
             <a href="../index.html" class="btn btn-success btn-lg" role="button" aria-disabled="true">Log Out</a>
-            <?php
+            <?php       
 
-        }
+        }       
 
     ?>
     
