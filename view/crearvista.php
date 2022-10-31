@@ -34,6 +34,9 @@
             <input type="text" id="element_6" name="telefono" placeholder="Telefono" required />
             <span id="element_6_msg" style="color:red"></span>
 
+            <input type="file" id="element_7" name="img" placeholder="Foto" required />
+            <span id="element_7_msg" style="color:red"></span>
+
     
             <input type="submit" class="btn btn-warning" value="Crear">
         </form>

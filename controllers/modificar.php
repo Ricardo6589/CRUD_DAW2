@@ -17,10 +17,16 @@ if(!isset($_SESSION['admin'])){
     $contraseña_alu = $_POST['contraseña'];
     $contraseña_alu = sha1($contraseña_alu);  
     $dni_alu = $_POST['dni'];
-    $telefono_alu = $_POST['telefono'];
+    $telefono_alu = $_POST['telefono'];    
+    $path=date('h-i-s-j-m-y')."-".$_FILES['img']['name'];     
+    if (move_uploaded_file($_FILES['img']['tmp_name'],'../img_usuarios/'.$path)) {
+        
+         Alumno::updateAlumno($nombre_alu,$primer_apellido_alu,$segundo_apellido_alu, $correo_alu, $contraseña_alu, $dni_alu, $telefono_alu,$path,$id);
+
+    }
 
 
-    Alumno::updateAlumno($nombre_alu,$primer_apellido_alu,$segundo_apellido_alu, $correo_alu, $contraseña_alu, $dni_alu, $telefono_alu,$id);
+   
 
     echo"<script>window.location.href = '../view/vista.php' </script>";
 

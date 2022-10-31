@@ -47,6 +47,10 @@
                 <input type="text" id="element_6" name="telefono"  value="<?php echo $alumno['telefono_alu'];?>" required /> <br><br>
                 <span id="element_6_msg" style="color:red"></span>
 
+                <label for="img">Foto</label><br>
+                <input type="file" id="element_7" name="img"  value="<?php echo $alumno['img_alu'];?>" required /> <br><br>
+                <span id="element_7_msg" style="color:red"></span>
+
         
                 <input type="submit" class="btn btn-warning" value="Modificar">
             </form>

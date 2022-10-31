@@ -15,8 +15,9 @@ session_start();
 
     $id = $_GET['id'];
 
-    Alumno::eliminarAlumno($id);
-
+    Alumno::eliminarAlumno($id);  
+    
     echo"<script>window.location.href = '../view/vista.php' </script>";
+
 
 }

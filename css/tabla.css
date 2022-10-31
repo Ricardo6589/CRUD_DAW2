@@ -224,3 +224,7 @@ form#form_filtros {
     justify-content: right;
     margin-top: 2%;
 }
+
+.img_perfil {
+    width: 50%;
+}

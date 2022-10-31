@@ -51,8 +51,9 @@
                     </button>
                   </form> 
                   <form id="form_filtros" action="vista.php" method="get">
-                    <input type="text" class="form-control" name="nombre_filtro" placeholder="Nombre">
-                    <button class="btn btn-default" title="Filtrar">
+                    <input type="text" class="form-control" name="dni_filtro" placeholder="DNI">
+                    <input type="text" class="form-control" name="nombre_filtro" placeholder="Nombre">                    
+                    <button class="btn btn-default" name="filtrar" title="Filtrar">
                       <i class="fa-solid fa-magnifying-glass">
                         <!-- php aqui -->
                       </i>
@@ -81,15 +82,15 @@
                 require_once '../model/alumno.php'; 
                 
                 if(isset($_GET['filtrar'])){
-                    $nombre_filtro=$_GET['nombre_filtro']; 
-                    $listaAlumnos=Alumno::getAlumnos('nombre_alu',$nombre_filtro);  
+                    $dni_filtro=$_GET['dni_filtro']; 
+                    $nombre_filtro=$_GET['nombre_filtro'];                    
+                    $listaAlumnos=Alumno::getAlumnos('dni_alu',$dni_filtro);  
                 }
                 else{ 
-                    $listaAlumnos=Alumno::getAlumnos('nombre_alu', "");  
+                    $listaAlumnos=Alumno::getAlumnos('dni_alu',"");  
                 } 
                 foreach ($listaAlumnos as $tbl_alumnos){
-                  echo "<tr>";   
-                 
+                  echo "<tr>";                    
                   echo "<td>{$tbl_alumnos['dni_alu']}</td>";            
                   echo "<td>{$tbl_alumnos['nombre_alu']}</td>";
                   echo "<td>{$tbl_alumnos['primer_apellido_alu']}</td>";

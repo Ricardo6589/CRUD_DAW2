@@ -1,11 +1,13 @@
 
 <?php
 
-  require_once "cabecera.html";
+  
   session_start();            
   if(empty($_SESSION['correo'])){ 
     echo"<script>window.location.href = '../index.html' </script>";
   }else{
+    
+  require_once "cabecera.html";
 
   ?>
   <body>
@@ -52,8 +54,12 @@
               </thead>
               <tbody>
                 <?php
+
+                $ruta= "../img_usuarios/";                
             
                 echo "<tr>";
+
+                  echo "<td><img class='img_perfil' src=$ruta"."{$alumno['img_alu']}></td>";                
                   echo "<td>{$alumno['dni_alu']}</td>";            
                   echo "<td>{$alumno['nombre_alu']}</td>";
                   echo "<td>{$alumno['primer_apellido_alu']}</td>";
