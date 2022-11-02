@@ -15,12 +15,12 @@
 
 <?php
 include_once "../model/conexion.php";
-if(!isset($_GET['page'])) {
+if (!isset($_GET['page'])) {
   $page = 1;
 } else {
   $page = $_GET['page'];
 }
-if(isset($_GET['chnglimit'])) {
+if (isset($_GET['chnglimit'])) {
   $chnglimit = $_GET['chnglimit'];
   $limit = $chnglimit;
 } else {
@@ -37,14 +37,13 @@ $next = $page + 1;
 //$pages = $connection->query("SELECT count(*) FROM tbl_alumnos;");
 //$pages = $count->fetch_all(MYSQLI_ASSOC);
 //$page = isset($_GET['page']) ? $_GET['page'] : 1;
-
-$result = mysqli_query($connection, "SELECT * FROM tbl_alumnos;");
-$result1 =mysqli_query($connection, "SELECT * FROM tbl_alumnos LIMIT $start,$limit;");
 //$alumnos = my sqli_fetch_assoc($result);
+$result = mysqli_query($connection, "SELECT * FROM tbl_alumnos;");
+$result1 = mysqli_query($connection, "SELECT * FROM tbl_alumnos LIMIT $start,$limit;");
 $alumnos = $result1->fetch_all(MYSQLI_ASSOC);
 $count = mysqli_num_rows($result);
 $count1 = mysqli_num_rows($result1);
-$pages = ceil($count/$limit)
+$pages = ceil($count / $limit)
 
 
 
@@ -118,22 +117,22 @@ $pages = ceil($count/$limit)
               </tr>
             </thead>
             <tbody>
-              <?php foreach($alumnos as $alumno) :?>
-              <tr>
-                <td><?= $alumno['dni_alu']; ?></td>
-                <td><?= $alumno['nombre_alu']; ?></td>
-                <td><?= $alumno['apellidos_alu']; ?></td>
-                <td><?= $alumno['correo_alu']; ?></td>
-                <td><?= $alumno['telefono_alu']; ?></td>
-                <td>
-                  <ul class="action-list">
-                    <li>
-                      <a href="#" data-tip="Perfil"><i class="fa-regular fa-address-card"></i></a>
-                    </li>
+              <?php foreach ($alumnos as $alumno) : ?>
+                <tr>
+                  <td><?= $alumno['dni_alu']; ?></td>
+                  <td><?= $alumno['nombre_alu']; ?></td>
+                  <td><?= $alumno['apellidos_alu']; ?></td>
+                  <td><?= $alumno['correo_alu']; ?></td>
+                  <td><?= $alumno['telefono_alu']; ?></td>
+                  <td>
+                    <ul class="action-list">
+                      <li>
+                        <a href="#" data-tip="Perfil"><i class="fa-regular fa-address-card"></i></a>
+                      </li>
 
-                  </ul>
-                </td>
-              </tr>
+                    </ul>
+                  </td>
+                </tr>
               <?php endforeach; ?>
               <!-- hasta aqui -->
             </tbody>
@@ -144,18 +143,29 @@ $pages = ceil($count/$limit)
             <div class="col col-sm-6 col-xs-6">
               Mostrando <b>
                 <!-- php aqui  -->
-                <?php echo $count1;?>
+                <?php echo $count1; ?>
               </b> de <b>
                 <!-- php aqui  -->
-                <?php echo $count;?>
+                <?php echo $count; ?>
               </b>
+              <form action="BD_profesores.php" method="get">
+                <input type="text" class="form-control" id="buscar" name="chnglimit" placeholder="Datos por página..." maxlength="4" size="4">
+              <button class="btn btn-default" title="Mostrar" value="Mostrar">
+                <i class="fa-solid fa-file">
+                </i>
+              </button>
+              </form>
+              <!-- <form action="BD_profesores.php" method="get">
+                <input type="text" class="form-control" id="buscar" name="chnglimit" placeholder="Datos por página...">
+                <input type="submit" class="btn btn-success" value="Mostrar">
+              </form> -->
             </div>
             <div class="col-sm-6 col-xs-6">
               <ul class="pagination hidden-xs pull-right">
                 <!-- <li><a id="johncena" href="BD_Profesores.php?page=<?= $previous; ?>">
                     <i class="fa-solid fa-arrow-left"></i></a>
                 </li> -->
-                <?php for($i = 1 ; $i <= $pages ; $i++) : ?>
+                <?php for ($i = 1; $i <= $pages; $i++) : ?>
                   <li class="active"><a href="BD_Profesores.php?chnglimit=<?= $limit; ?>&page=<?= $i; ?>"><?= $i; ?></a></li>
                 <?php endfor; ?>
                 <!-- <li><a href="BD_Profesores.php?page=<?= $next; ?>"><i class="fa-solid fa-arrow-right"></i></a></li> -->
@@ -164,10 +174,7 @@ $pages = ceil($count/$limit)
                 <li><a href="#"><i class="fa-solid fa-arrow-left"></i></a></li>
                 <li><a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
               </ul> -->
-              <form action="BD_profesores.php" method="get">
-                <input type="text" class="form-control" id="buscar" name="chnglimit" placeholder="Datos por página...">
-                <input type="submit" class="btn btn-success" value="Mostrar">
-              </form>
+
             </div>
           </div>
         </div>
@@ -175,4 +182,5 @@ $pages = ceil($count/$limit)
     </div>
   </div>
 </body>
+
 </html>

@@ -19,10 +19,10 @@ function errorEmail($correo){
 }
 
 function checkusername($username,$conexion){
-   $sql2="SELECT * FROM tbl_profesores WHERE correo_profe = ? and contraseña_profe = ?";
+   $sql3="SELECT * FROM tbl_profesores WHERE correo_profe = ? and contraseña_profe = ?";
    $stmt=mysqli_stmt_init($conexion);
    
-   if(!mysqli_stmt_prepare($stmt,$sql2)){
+   if(!mysqli_stmt_prepare($stmt,$sql3)){
        header('Location:../registro.php?error=errorconexion');
     exit();
 

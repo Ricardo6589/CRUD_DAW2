@@ -15,7 +15,7 @@ $sql = "SELECT * FROM tbl_profesores WHERE correo_profe = '$correo' and contrase
 $stmt=mysqli_stmt_init($connection);
    
 if(!mysqli_stmt_prepare($stmt,$sql)){
-       header('Location:../registro.php?error=errorconexion');
+       header('Location:../index.php?error=errorconexion');
     exit();
 
 }
@@ -27,10 +27,7 @@ if(errorEmail($correo)!==FALSE){
     header('Location:../index.php?error=erroremail');
     exit();
 }
-if(checkusername($correo,$connection)!==FALSE){
-    header('Location:../index.php?error=checkuser');
-    exit();
-}
+
 $resultados = mysqli_query($connection,$sql);
 $num=mysqli_num_rows($resultados);
    
