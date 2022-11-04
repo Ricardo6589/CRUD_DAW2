@@ -7,7 +7,7 @@
     require_once "cabecera.html";     
 
     
-    $connection = mysqli_connect("localhost","root", "","bd_sintesi");
+    // $connection = mysqli_connect("localhost","root", "","bd_sintesi");
     
     // if (!isset($_GET['page'])) {
     //   $page = 1;
@@ -24,20 +24,20 @@
     // $start = ($page - 1) * $limit;
     // $previous = $page - 1;
     // $next = $page + 1;
-    //$sql = "SELECT COUNT(*) FROM tbl_alumnos";
-    //$result = mysqli_query($connection,$sql);
-    //$pages = mysqli_fetch_assoc($result);
+    // $sql = "SELECT COUNT(*) FROM tbl_alumnos";
+    // $result = mysqli_query($connection,$sql);
+    // $pages = mysqli_fetch_assoc($result);
 
-    //$pages = $connection->query("SELECT count(*) FROM tbl_alumnos;");
-    //$pages = $count->fetch_all(MYSQLI_ASSOC);
-    //$page = isset($_GET['page']) ? $_GET['page'] : 1;
-    //$alumnos = my sqli_fetch_assoc($result);
-    $result = mysqli_query($connection, "SELECT * FROM tbl_alumnos;");
-    $result1 = mysqli_query($connection, "SELECT * FROM tbl_alumnos LIMIT $start,$limit;");
-    $alumnos = $result1->fetch_all(MYSQLI_ASSOC);
-    $count = mysqli_num_rows($result);
-    $count1 = mysqli_num_rows($result1);
-    $pages = ceil($count / $limit);  
+    // $pages = $connection->query("SELECT count(*) FROM tbl_alumnos;");
+    // $pages = $count->fetch_all(MYSQLI_ASSOC);
+    // $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    // $alumnos = my sqli_fetch_assoc($result);
+    // $result = mysqli_query($connection, "SELECT * FROM tbl_alumnos;");
+    // $result1 = mysqli_query($connection, "SELECT * FROM tbl_alumnos LIMIT $start,$limit;");
+    // $alumnos = $result1->fetch_all(MYSQLI_ASSOC);
+    // $count = mysqli_num_rows($result);
+    // $count1 = mysqli_num_rows($result1);
+    // $pages = ceil($count / $limit);  
     ?>
     <div class="container">
       <div class="col-md-offset-1 col-md-10">
@@ -178,47 +178,9 @@
               </table>
             </div>
             <div class="panel-footer">
-              <div class="row">
-                <div class="col col-sm-6 col-xs-6">
-                Mostrando <b>
-                  <!-- php aqui  -->
-                  <?php echo $count1; ?>
-                </b> de <b>
-                  <!-- php aqui  -->
-                  <?php echo $count; ?>
-                </b>
-                <?php
-                echo "$chnglimit";
-                ?>
-                <form action="vista.php" method="get">
-                  <input type="text" class="form-control" id="buscar" name="chnglimit" placeholder="Datos por página..." maxlength="4" size="4">
-                <button class="btn btn-default" title="Mostrar" value="Mostrar">
-                  <i class="fa-solid fa-file">
-                  </i>
-                </button>
-                </form>
-                <!-- <form action="BD_profesores.php" method="get">
-                  <input type="text" class="form-control" id="buscar" name="chnglimit" placeholder="Datos por página...">
-                  <input type="submit" class="btn btn-success" value="Mostrar">
-                </form> -->
-              </div>
-              <div class="col-sm-6 col-xs-6">
-                <ul class="pagination hidden-xs pull-right">
-                  <!-- <li><a id="johncena" href="BD_Profesores.php?page=<?= $previous; ?>">
-                      <i class="fa-solid fa-arrow-left"></i></a>
-                  </li> -->
-                  <?php for ($i = 1; $i <= $pages; $i++) : ?>
-                    <li class="active"><a href="vista.php?chnglimit=<?= $limit; ?>&page=<?= $i; ?>"><?= $i; ?></a></li>
-                  <?php endfor; ?>
-                  <!-- <li><a href="BD_Profesores.php?page=<?= $next; ?>"><i class="fa-solid fa-arrow-right"></i></a></li> -->
-                </ul>
-                <!-- <ul class="pagination visible-xs pull-right">
-                  <li><a href="#"><i class="fa-solid fa-arrow-left"></i></a></li>
-                  <li><a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
-                </ul> -->
-
-              </div>
-              </div>    
+              <div class="row">                
+              </div>              
+                  
             </div>
           </div>
         </div>

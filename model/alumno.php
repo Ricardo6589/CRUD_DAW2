@@ -211,37 +211,23 @@ class Alumno {
     */
     public static function getAlumnos($dni_alu,$dni_filtro,$nombre_alu,$nombre_filtro){      
            
-        require_once "conexion.php";
-        $chnglimit=$_GET['chnglimit'];
-        if (!isset($_GET['page'])) {
-            $page = 1;
-          } else {
-            $page = $_GET['page'];
-          }
-          if (isset($_GET['chnglimit'])) {
-            $chnglimit = $_GET['chnglimit'];
-            $limit = $chnglimit;
-          } else {
-            $limit = 5;
-          }
-      
-          $start = ($page - 1) * $limit;
+        require_once "conexion.php";   
          
 
          if ($dni_filtro=="" AND $nombre_filtro=="") {
             
-            $sql = "SELECT * FROM tbl_alumnos LIMIT $start,$limit;";
+            $sql = "SELECT * FROM tbl_alumnos;";
             
         }else if (!$dni_filtro AND $nombre_filtro!=""){
            
-            $sql="SELECT * FROM tbl_alumnos LIMIT $start,$limit; WHERE nombre_alu='$nombre_filtro ";
+            $sql="SELECT * FROM tbl_alumnos WHERE nombre_alu='$nombre_filtro";
             // $sql = $sql. "  nombre_alu='$nombre_filtro'";
         }else if ($dni_filtro!="" AND $nombre_filtro==""){
             
-            $sql="SELECT * FROM tbl_alumnos LIMIT $start,$limit; WHERE dni_alu='$dni_filtro'";
+            $sql="SELECT * FROM tbl_alumnos WHERE dni_alu='$dni_filtro'";
         }else if ($dni_filtro!="" AND $nombre_filtro!=""){
             
-            $sql="SELECT * FROM tbl_alumnos LIMIT $start,$limit; WHERE dni_alu='$dni_filtro' and nombre_alu='$nombre_filtro'";
+            $sql="SELECT * FROM tbl_alumnos WHERE dni_alu='$dni_filtro' and nombre_alu='$nombre_filtro'";
         }        
         
         $listaAlumnos = mysqli_query($connection, $sql);  

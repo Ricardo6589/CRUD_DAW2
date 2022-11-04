@@ -32,7 +32,7 @@ if(empty($_SESSION['correo'])){
               </div>
               <div class="col-sm-9 col-xs-12 text-right">
                 <div class="btn_group">
-                  <form action="crearnotavista.php">  
+                  <form action="crearnotavista.php?id={$id_alumno}">  
                       <button class="btn btn-default" title="Crear Nota">
                         <i class="fa-solid fa-circle-plus">                 
                         </i>
