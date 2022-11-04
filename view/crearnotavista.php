@@ -7,11 +7,16 @@
         echo"<script>window.location.href = '../index.html' </script>";
     }else{
     
-        require_once 'cabecera.html';  
+        require_once 'cabecera.html'; 
+        
+        $id_alumno = $_POST['id_alumno'];
+        
 
         ?>
         <div class="form-group align-items-center">
         <form action="../controllers/crearnota.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
+
+            <input type="hidden" name="id" value="<?php echo $id_alumno;?>">
 
             <input type=" text " id="element_8" name="nombre_modulo" placeholder="Modulo" required />
             <span id="element_8_msg" style="color:red"></span>

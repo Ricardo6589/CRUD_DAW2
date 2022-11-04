@@ -28,11 +28,12 @@ if(empty($_SESSION['correo'])){
           <div class="panel-heading">
             <div class="row">
               <div class="col col-sm-3 col-xs-12">
-                <h4 class="title">Notas: <!--<?php echo"{$tbl_alumnos['nombre_alu']}" ?>--></h4>
+                <h4 class="title">Notas:</h4>
               </div>
               <div class="col-sm-9 col-xs-12 text-right">
                 <div class="btn_group">
-                  <form action="crearnotavista.php?id={$id_alumno}">  
+                  <form action="../view/crearnotavista.php" method="post">                        
+                      <input type="hidden" name="id_alumno" value="<?php echo $nota[$id_alumno];?>">
                       <button class="btn btn-default" title="Crear Nota">
                         <i class="fa-solid fa-circle-plus">                 
                         </i>
