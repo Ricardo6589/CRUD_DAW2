@@ -79,15 +79,10 @@ if(empty($_SESSION['correo'])){
                           <?php
                           echo "<a  href='../controllers/eliminar.php?id={$id_alumno}' data-tip='Eliminar'><i class='fa fa-trash'></i></a>"
                           ?>
-                        </li>                    
-                                         
+                        </li>                              
                     </ul>
                   <td>
-                  <?php
-                                            
-                echo "</tr>";
-                ?> 
-                <!-- hasta aqui -->
+
               </tbody>
             </table>
           </div>

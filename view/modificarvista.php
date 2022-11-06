@@ -25,9 +25,6 @@ if (!isset($_SESSION['admin'])) {
                         <div class="col-sm-9 col-xs-12 text-right">
                             <div class="btn_group">
                                 <div class="form-group align-items-center">
-                                    <form action="../controllers/modificar.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
-                                        <input type="submit" class="btn btn-warning" value="Modificar">
-                                    </form>
                                     <form action="./vista.php">
                                         <button class="btn btn-default" title="Salir">
                                             <i class="fa-solid fa-right-from-bracket">
@@ -97,14 +94,17 @@ if (!isset($_SESSION['admin'])) {
                                         </td>
 
                                     </tr>
+
                                 <?php
                                 echo "</tr>";
                             }
                                 ?>
                                 </tbody>
-                            </form>
                         </div>
                     </table>
+                    <input type="submit" class="btn btn-warning" value="Modificar">
+                    </form>
+
                 </div>
             </div>
         </div>
