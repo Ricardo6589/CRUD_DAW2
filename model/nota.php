@@ -166,14 +166,14 @@ class Nota {
     }
 
 
-    public static function crearNota($id,$nombre_modulo,$nombre_uf,$nombre_nota,$nota){        
+    public static function crearNota($id,$nombre_modulo,$nombre_uf,$nombre_nota,$nota,$id_alumnos){        
        
-        require_once "conexion.php";
+        require_once 'conexion.php';
            
-        $sql="INSERT INTO tbl_notas ($id,$nombre_modulo,$nombre_uf,$nombre_nota,$nota) VALUES (?,?,?,?,?)";
-        $stmt=mysqli_stmt_init($connection);
-        mysqli_stmt_prepare($stmt,$sql);
-        mysqli_stmt_bind_param($stmt,"issss",$id,$nombre_modulo,$nombre_uf,$nombre_nota,$nota);         
+        $sql="INSERT INTO tbl_notas (id,nombre_modulo,nombre_uf,nombre_nota,nota,id_alumnos) VALUES (?,?,?,?,?,?)";
+        $stmt=mysqli_stmt_init($connection);       
+        $prepare= mysqli_stmt_prepare($stmt,$sql);             
+        mysqli_stmt_bind_param($stmt,"issssi",$id,$nombre_modulo,$nombre_uf,$nombre_nota,$nota,$id_alumnos);         
         mysqli_stmt_execute($stmt);  
     
     }  

@@ -25,9 +25,7 @@ if (!isset($_SESSION['admin'])) {
                         <div class="col-sm-9 col-xs-12 text-right">
                             <div class="btn_group">
                                 <div class="form-group align-items-center">
-                                    <form action="../controllers/modificar.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
-                                        <input type="submit" class="btn btn-warning" value="Modificar">
-                                    </form>
+                                    
                                     <form action="./vista.php">
                                         <button class="btn btn-default" title="Salir">
                                             <i class="fa-solid fa-right-from-bracket">
@@ -95,13 +93,16 @@ if (!isset($_SESSION['admin'])) {
                                             <input type="file" id="element_7" name="img" value="<?php echo $alumno['img_alu']; ?>" required /> <br><br>
                                             <span id="element_7_msg" style="color:red"></span>
                                         </td>
+                                       
 
-                                    </tr>
+                                    </tr> 
+                                    
                                 <?php
                                 echo "</tr>";
                             }
                                 ?>
                                 </tbody>
+                                <input type="submit" class="btn btn-warning" value="Modificar">
                             </form>
                         </div>
                     </table>

@@ -6,39 +6,7 @@
   }else{ 
     require_once "cabecera.html";     
 
-    
-    // $connection = mysqli_connect("localhost","root", "","bd_sintesi");
-    
-    // if (!isset($_GET['page'])) {
-    //   $page = 1;
-    // } else {
-    //   $page = $_GET['page'];
-    // }
-    // if (isset($_GET['chnglimit'])) {
-    //   $chnglimit = $_GET['chnglimit'];
-    //   $limit = $chnglimit;
-    // } else {
-    //   $limit = 5;
-    // }
-
-    // $start = ($page - 1) * $limit;
-    // $previous = $page - 1;
-    // $next = $page + 1;
-    // $sql = "SELECT COUNT(*) FROM tbl_alumnos";
-    // $result = mysqli_query($connection,$sql);
-    // $pages = mysqli_fetch_assoc($result);
-
-    // $pages = $connection->query("SELECT count(*) FROM tbl_alumnos;");
-    // $pages = $count->fetch_all(MYSQLI_ASSOC);
-    // $page = isset($_GET['page']) ? $_GET['page'] : 1;
-    // $alumnos = my sqli_fetch_assoc($result);
-    // $result = mysqli_query($connection, "SELECT * FROM tbl_alumnos;");
-    // $result1 = mysqli_query($connection, "SELECT * FROM tbl_alumnos LIMIT $start,$limit;");
-    // $alumnos = $result1->fetch_all(MYSQLI_ASSOC);
-    // $count = mysqli_num_rows($result);
-    // $count1 = mysqli_num_rows($result1);
-    // $pages = ceil($count / $limit);  
-    ?>
+   ?>
     <div class="container">
       <div class="col-md-offset-1 col-md-10">
         <div class="panel">

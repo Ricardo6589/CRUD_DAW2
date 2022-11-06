@@ -12,11 +12,11 @@
         $nombre_uf = $_POST['nombre_uf'];
         $nombre_nota = $_POST['nombre_nota'];
         $nota = $_POST['nota'];
-        $id_alumno = $_GET['id'];
+        $id_alumnos = $_POST['id'];     
        
 
-        Nota::crearNota(null,$nombre_modulo,$nombre_uf,$nombre_nota,$nota,$id_alumno);
+        Nota::crearNota(null,$nombre_modulo,$nombre_uf,$nombre_nota,$nota,$id_alumnos);
 
-        // echo"<script>window.location.href = '../view/nota.php' </script>";
+        echo"<script>window.location.href = '../view/vista.php' </script>";
 
     }

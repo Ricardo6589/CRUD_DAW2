@@ -19,6 +19,7 @@ if(empty($_SESSION['correo'])){
         <div class="panel">
 
           <?php
+          error_reporting(0);
           require_once '../model/nota.php';  
           $id_alumno=$_GET["id"];    
           $nota=Nota::getNotaId($id_alumno);        
@@ -33,7 +34,7 @@ if(empty($_SESSION['correo'])){
               <div class="col-sm-9 col-xs-12 text-right">
                 <div class="btn_group">
                   <form action="../view/crearnotavista.php" method="post">                        
-                      <input type="hidden" name="id_alumno" value="<?php echo $nota[$id_alumno];?>">
+                      <input type="hidden" name="id_alumno" value="<?php echo $id_alumno;?>">
                       <button class="btn btn-default" title="Crear Nota">
                         <i class="fa-solid fa-circle-plus">                 
                         </i>
@@ -62,33 +63,39 @@ if(empty($_SESSION['correo'])){
               </thead>
               <tbody>
                 <!-- foreach php aqui -->
-                <?php     
-                echo "<tr>";               
-                  echo "<td>{$nota['nombre_modulo']}</td>";            
-                  echo "<td>{$nota['nombre_uf']}</td>";
-                  echo "<td>{$nota['nombre_nota']}</td>";
-                  echo "<td>{$nota['nota']}</td>"; 
-                  ?>
-                  <td>
-                    <ul class="action-list">                      
-                        <li>
-                          <?php
-                            echo "<a href='../view/modificarnotavista.php?id={$id_alumno}' data-tip='Editar'><i class='fa fa-edit'></i></a>"
-                          ?>
-                        </li>
-                        <li>
-                          <?php
-                          echo "<a  href='../controllers/eliminar.php?id={$id_alumno}' data-tip='Eliminar'><i class='fa fa-trash'></i></a>"
-                          ?>
-                        </li>                    
-                                         
-                    </ul>
-                  <td>
-                  <?php
-                                            
-                echo "</tr>";
+                <?php        
+                                  
+                    echo "<tr>";               
+                    echo "<td>{$nota['nombre_modulo']}</td>";            
+                    echo "<td>{$nota['nombre_uf']}</td>";
+                    echo "<td>{$nota['nombre_nota']}</td>";
+                    echo "<td>{$nota['nota']}</td>"; 
+                    ?>
+                    
+                    <td>
+                      <ul class="action-list">                      
+                          <li>
+                            <?php
+                              echo "<a href='../view/modificarnotavista.php?id={$id_alumno}' data-tip='Editar'><i class='fa fa-edit'></i></a>"
+                            ?>
+                          </li>
+                          <li>
+                            <?php
+                            echo "<a  href='../controllers/eliminar.php?id={$id_alumno}' data-tip='Eliminar'><i class='fa fa-trash'></i></a>"
+                            ?>
+                          </li>                    
+                                          
+                      </ul>
+                    <td>
+                    <?php                                            
+                  echo "</tr>";
+                  
+                  
+                
                 ?> 
                 <!-- hasta aqui -->
+                
+                
               </tbody>
             </table>
           </div>

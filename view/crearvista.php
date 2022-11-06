@@ -21,15 +21,13 @@ if (!isset($_SESSION['admin'])) {
                         <div class="col-sm-9 col-xs-12 text-right">
                             <div class="btn_group">
                                 <div class="form-group align-items-center">
-                                    <form action="../controllers/crear.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
-                                        <input type="submit" class="btn btn-warning" value="Crear">
-                                    </form>
                                     <form action="./vista.php">
                                         <button class="btn btn-default" title="Salir">
                                             <i class="fa-solid fa-right-from-bracket">
                                             </i>
                                         </button>
                                     </form>
+                                    <form action="../controllers/crear.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
                                 </div>
                             </div>
                         </div>
@@ -90,6 +88,8 @@ if (!isset($_SESSION['admin'])) {
                         ?>
                         </tbody>
                     </table>
+                    <input type="submit" class="btn btn-warning" value="Crear">
+                    </form>
                 </div>
             </div>
         </div>
