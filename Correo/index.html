@@ -1,0 +1,21 @@
+<html>
+<script src="./js/validacorro.js"></script>
+<h2>Formulario Envio Correo:</h2>
+<form action="./correo.php" method="POST">
+    Cuantos correos:
+    <select name="educacion">
+        <option value="uno">Uno</option>
+        <option value="varios">Varios</option>
+        <option value="todos">Todos</option>
+    </select> <br>
+    <div id="a" style="display: block">
+        Correo/s:<br>
+        <input type="text" name="correo"><br> Cuerpo:
+        <br>
+        <input type="text" name="cuerpo"><br> Mensaje:
+        <br>
+        <input type="text" name="mensaje"><br>
+        <input type="submit" name="submit" value="Enviar">
+    </div>
+</form>
+</body>
