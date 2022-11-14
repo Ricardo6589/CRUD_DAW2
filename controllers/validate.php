@@ -38,3 +38,15 @@ function checkusername($username,$conexion){
     mysqli_stmt_close($stmt);
     return $error;
 }
+
+function checkEmail($correo_alu) {
+    $connection = mysqli_connect("localhost", "root", "", "bd_sintesi");
+    $sql4="SELECT * FROM tbl_alumnos WHERE correo_alu = $correo_alu";
+    $resultado1 = mysqli_query($connection,$sql4);
+    if($resultado1==true){
+        $error=true;
+    }else{
+        $error=false;
+    }
+    return $error;
+}

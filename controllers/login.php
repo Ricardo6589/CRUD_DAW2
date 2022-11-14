@@ -1,7 +1,9 @@
 <?php
 
+
 require_once './validate.php';
 require_once '../model/conexion.php';
+
 
 $correo = $_POST['correo'];
 $contraseña = $_POST['contraseña'];
@@ -12,18 +14,19 @@ $correo = $connection->real_escape_string($correo);
 $sql = "SELECT * FROM tbl_profesores WHERE correo_profe = '$correo' and contraseña_profe = '$passwordHash';";
 $sql2 =  "SELECT * FROM tbl_admin WHERE correo_admin = '$correo' and contraseña_admin = '$passwordHash';";
 
+
 $stmt = mysqli_stmt_init($connection);
 
 if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header('Location:../index.php?error=errorconexion');
+    header('Location:logval.php?error=errorconexion');
     exit();
 }
 if (registroCamposVacios($correo, $contraseña) !== FALSE) {
-    header('Location:../index.php?error=camposvacios');
+    header('Location:logval.php?error=camposvacios');
     exit();
 }
 if (errorEmail($correo) !== FALSE) {
-    header('Location:../index.php?error=erroremail');
+    header('Location:logval.php?error=erroremail');
     exit();
 }
 

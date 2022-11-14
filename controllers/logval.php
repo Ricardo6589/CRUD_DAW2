@@ -10,13 +10,19 @@
 <?php
 if(isset($_GET['error'])){
     if($_GET['error']=='camposvacios'){
-        echo "Te has olvidado de introducir un campo ";
+        echo "Te has olvidado de introducir un campo. ";
     }
 }
 
 if(isset($_GET['error'])){
     if($_GET['error']=='erroremail'){
-        echo "email no es correcto ";
+        echo "email no es correcto. ";
+    }
+}
+
+if(isset($_GET['error'])){
+    if($_GET['error']=='checkemail'){
+        echo "El email ya esta introducido en la base de datos. ";
     }
 }
 
