@@ -45,7 +45,7 @@
                       </i>
                     </button>
                   </form>  
-                  <form action="estadisticas_nota.php">
+                  <form action="../Correo/index.html">
                      <button class="btn btn-default" title="Enviar Mail">
                       <i class="fa-regular fa-envelope">                        
                       </i>

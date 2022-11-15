@@ -69,27 +69,8 @@ if(empty($_SESSION['correo'])){
                     echo "<td>{$nota['nombre_modulo']}</td>";            
                     echo "<td>{$nota['nombre_uf']}</td>";
                     echo "<td>{$nota['nombre_nota']}</td>";
-                    echo "<td>{$nota['nota']}</td>"; 
-                    ?>
-                    
-                    <td>
-                      <ul class="action-list">                      
-                          <li>
-                            <?php
-                              echo "<a href='../view/modificarnotavista.php?id={$id_alumno}' data-tip='Editar'><i class='fa fa-edit'></i></a>"
-                            ?>
-                          </li>
-                          <li>
-                            <?php
-                            echo "<a  href='../controllers/eliminar.php?id={$id_alumno}' data-tip='Eliminar'><i class='fa fa-trash'></i></a>"
-                            ?>
-                          </li>                    
-                                          
-                      </ul>
-                    <td>
-                    <?php                                            
-                  echo "</tr>";
-                  
+                    echo "<td>{$nota['nota']}</td>";                                                             
+                    echo "</tr>";           
                   
                 
                 ?> 

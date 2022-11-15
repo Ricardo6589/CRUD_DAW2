@@ -51,14 +51,29 @@ if (empty($_SESSION['correo'])) {
                                                     <tr>
                                                         <input type="hidden" name="id" value="<?php echo $id_alumno;?>">
                                                         <td style="color:black">
-
-                                                            <input type=" text " id="element_8" name="nombre_modulo" placeholder="Modulo" required />
-                                                            <span id="element_8_msg" style="color:red"></span>
+                                                            <select type=" text " id="element_8" name="nombre_modulo" placeholder="Modulo" required />
+                                                                <option name="nombre_modulo">M2</option>
+                                                                <option name="nombre_modulo">M3</option>
+                                                                <option name="nombre_modulo">M6</option>
+                                                                <option name="nombre_modulo">M7</option>
+                                                                <option name="nombre_modulo">M8</option>
+                                                                <option name="nombre_modulo">M9</option>
+                                                                <option name="nombre_modulo">M12</option>
+                                                            </select> 
+                                                            <span id="element_8_msg" style="color:red"></span>                               
+                                                           
                                                         </td>
                                                         <td style="color:black">
 
-                                                            <input type="text" id="element_9" name="nombre_uf" placeholder="UF" required />
-                                                            <span id="element_9_msg" style="color:red"></span>
+                                                            <select type="text" id="element_9" name="nombre_uf" placeholder="UF" required />
+                                                                <option  name="nombre_uf">UF1</option>
+                                                                <option name="nombre_uf">UF2</option>
+                                                                <option name="nombre_uf">UF3</option>
+                                                                <option name="nombre_uf">UF4</option>
+                                                                
+                                                            </select> 
+                                                            <span id="element_9_msg" style="color:red"></span>                                                           
+                                                            
                                                         </td>
                                                         <td style="color:black">
 

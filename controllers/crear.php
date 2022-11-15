@@ -15,7 +15,9 @@
         $contraseña_alu = $_POST['contraseña'];
         $contraseña_alu = sha1($contraseña_alu);  
         $dni_alu = $_POST['dni'];
-        $telefono_alu = $_POST['telefono'];
+        $telefono_alu = $_POST['telefono'];   
+        
+
         $path=date('h-i-s-j-m-y')."-".$_FILES['img']['name']; 
         if (move_uploaded_file($_FILES['img']['tmp_name'],'../img_usuarios/'.$path)) {
         

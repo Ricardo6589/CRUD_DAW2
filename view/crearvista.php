@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin'])) {
     echo "<script>window.location.href = '../index.html' </script>";
 } else {
 
-    require_once 'cabecera.html';
+    include 'cabecera.html';
 
 ?>
     <div class="container">
@@ -27,7 +27,7 @@ if (!isset($_SESSION['admin'])) {
                                             </i>
                                         </button>
                                     </form>
-                                    <form action="../controllers/crear.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -48,6 +48,7 @@ if (!isset($_SESSION['admin'])) {
                             </tr>
                         </thead>
                         <tbody>
+                        <form action="../controllers/crear.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
                             <tr>
                                 <td style="color:black">
                                     <input type=" text " id="element_1" name="nombre" placeholder="Nombre" required size="5px" />
