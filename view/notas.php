@@ -7,7 +7,7 @@ if(empty($_SESSION['correo'])){
   echo"<script>window.location.href = '../index.html' </script>";
 }else{
   
-  require_once "cabecera.html";
+  include "cabecera.html";
 
   ?>
 
@@ -58,7 +58,7 @@ if(empty($_SESSION['correo'])){
                   <th>UF</th>
                   <th>Actividad</th>
                   <th>Nota</th>
-                  <th>Acciones</th>
+                  
                 </tr>
               </thead>
               <tbody>

@@ -7,7 +7,7 @@ if (empty($_SESSION['correo'])) {
     echo "<script>window.location.href = '../index.html' </script>";
 } else {
 
-    require_once 'cabecera.html';
+    include 'cabecera.html';
 
 ?>
     <div class="container">
@@ -31,7 +31,7 @@ if (empty($_SESSION['correo'])) {
                                     <?php
                                     $id_alumno = $_POST['id_alumno'];
                                     ?>
-                                    <form action="../controllers/crearnota.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
+                                    
                                                         </div>
                                                     </div>
                                                 </div>
@@ -47,6 +47,7 @@ if (empty($_SESSION['correo'])) {
                                                         <th>Nota</th>
                                                     </tr>
                                                 </thead>
+                                                <form action="../controllers/crearnota.php" method="POST" enctype="multipart/form-data" onchange="return validaFormulario();">
                                                 <tbody>
                                                     <tr>
                                                         <input type="hidden" name="id" value="<?php echo $id_alumno;?>">

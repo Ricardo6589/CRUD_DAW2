@@ -19,7 +19,7 @@ require_once '../view/cabecera.html';
                         <div class="btn_group">
                             <div class="form-group align-items-center">
 
-                                <form action="./vista.php">
+                                <form action="../view/vista.php">
                                     <button class="btn btn-default" title="Salir">
                                         <i class="fa-solid fa-right-from-bracket">
                                         </i>
@@ -41,7 +41,7 @@ require_once '../view/cabecera.html';
                         </thead>
                         <tbody>
                             <tr>
-                                <form action="./correo.php" method="POST">
+                                <form action="correo.php" method="POST">
                                     <td style="color:black">
                                         <select name="educacion">
                                             <option value="uno">Uno</option>

@@ -45,7 +45,7 @@
                       </i>
                     </button>
                   </form>  
-                  <form action="../Correo/index.html">
+                  <form action="../Correo/index.php">
                      <button class="btn btn-default" title="Enviar Mail">
                       <i class="fa-regular fa-envelope">                        
                       </i>
