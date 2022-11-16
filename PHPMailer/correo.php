@@ -41,8 +41,6 @@ try {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;     //Enable implicit TLS encryption
     $mail->Port       = 587;                               //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-    //correo que envia y correo que recive
-    //'100006393.joan23@fje.edu'
     $mail->setFrom(EMAIL , 'Mailer'); //tiene que ser con el que accedas real
 
     //un alumno

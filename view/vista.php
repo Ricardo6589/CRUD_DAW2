@@ -45,7 +45,7 @@
                       </i>
                     </button>
                   </form>  
-                  <form action="../Correo/index.php">
+                  <form action="../PHPMailer/index.php">
                      <button class="btn btn-default" title="Enviar Mail">
                       <i class="fa-regular fa-envelope">                        
                       </i>
@@ -84,6 +84,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                
                 <?php
                 $listaAlumnos;
 
